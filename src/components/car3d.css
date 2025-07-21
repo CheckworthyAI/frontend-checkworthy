@@ -1,0 +1,91 @@
+.carousel-container {
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  perspective: 1500px; /* Gives depth to the 3D scene */
+  position: relative;
+}
+.carousel-3d {
+  width: 529px; /* Smaller overall carousel */
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+}
+
+.carousel-item {
+  position: absolute;
+  width: 100%; /* Relative to .carousel-3d */
+  height: 100%; /* Relative to .carousel-3d */
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  overflow: hidden;
+  /* Key change: Reduced translateZ */
+  transform: rotateY(var(--rotation-angle, 90deg)) translateZ(150px); /* Example: Further reduced */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures images fit well */
+}
+@media (max-width: 600px) {
+   .carousel-container {
+    width: 250px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    perspective: 1500px; /* Gives depth to the 3D scene */
+    position: relative;
+  }
+  .carousel-3d {
+    width: 175px;
+    height: 350px;
+  }
+  .carousel-item {
+    transform: rotateY(var(--rotation-angle, 90deg)) translateZ(90px); /* Reduce Z for mobile */
+    border-radius: 10px;
+  }
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .nav-button {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    left: 8px;
+    right: 8px;
+  }
+}
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.nav-button.prev {
+  left: 20px;
+}
+
+.nav-button.next {
+  right: 20px;
+}
