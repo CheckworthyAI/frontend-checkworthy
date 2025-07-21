@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  background: lightgray;
+  text-align: center;
+  font-family: sans-serif;
+  color: #fefefe;
+}
+
+.container {
+  position: relative;
+  width: 320px;
+  perspective: 1000px;
+}
+
+.carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate360 60s infinite linear; /* Adjust speed if needed */
+}
+
+.carousel__face {
+  position: absolute;
+  width: 480px; /* Scale down from 1980 */
+  height: 213px; 
+  top: 20px;
+  left: 10px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+}
+
+span {
+  margin: auto;
+  font-size: 2rem;
+}
+
+/* === Only 4 Images === */
+.carousel__face:nth-child(1) {
+  background-image: url("../images/Dashboard1.jpg");
+  transform: rotateY(0deg) translateZ(430px);
+}
+
+.carousel__face:nth-child(2) {
+  background-image: url("../images/Dashboard2.jpg");
+  transform: rotateY(90deg) translateZ(430px);
+}
+
+.carousel__face:nth-child(3) {
+  background-image: url("../images/Dashboard3.jpg");
+  transform: rotateY(180deg) translateZ(430px);
+}
+
+.carousel__face:nth-child(4) {
+  background-image: url("../images/Dashboard4.jpg");
+  transform: rotateY(270deg) translateZ(430px);
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
